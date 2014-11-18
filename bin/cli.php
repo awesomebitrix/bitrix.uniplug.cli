@@ -19,7 +19,18 @@ chdir( $_SERVER["DOCUMENT_ROOT"] . '/bitrix/tmp');
 
 CModule::IncludeModule("uniplug.cli");
 
-$config = array();
+$arCommands = array();
+
+foreach(GetModuleEvents("uniplug.cli", "OnCommandListBuild", true) as $arEvent) {
+	$arCommand = array();
+	if ( ExecuteModuleEventEx($arEvent, array(&$arCommand)) !== false ) {
+		$arCommands = array_merge($arCommands, $arCommand);
+	}
+}
+
+$config = array(
+	"commands" => $arCommands,
+);
 
 $shell = new \Psy\Shell(new \Psy\Configuration($config));
 
