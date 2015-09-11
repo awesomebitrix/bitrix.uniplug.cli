@@ -74,6 +74,8 @@ class Version extends \Psy\Command\Command {
 			return array(
 				sprintf('<info>%s</info>', $arModule["MODULE_ID"]),
 				$arModule["MODULE_VERSION"],
+				sprintf('<info>%s</info>', $arModule["MODULE_NAME"]),
+				sprintf('<info>%s</info>', $arModule["MODULE_DESCRIPTION"]),
 			);
 		}
 
@@ -83,7 +85,9 @@ class Version extends \Psy\Command\Command {
 			$arModules[] = array(
 					sprintf('<info>%s</info>', $arModule["MODULE_ID"]),
 					$arModule["MODULE_VERSION"],
-				);
+					sprintf('<info>%s</info>', $arModule["MODULE_NAME"]),
+					sprintf('<info>%s</info>', $arModule["MODULE_DESCRIPTION"]),
+			);
 		}
 
 		return $arModules;
@@ -95,6 +99,8 @@ class Version extends \Psy\Command\Command {
 			return array(
 				sprintf('<info>%s</info>', $arModule["MODULE_ID"]),
 				$arModule["MODULE_VERSION"],
+				sprintf('<info>%s</info>', $arModule["MODULE_NAME"]),
+				sprintf('<info>%s</info>', $arModule["MODULE_DESCRIPTION"]),
 			);
 		}
 
@@ -104,6 +110,8 @@ class Version extends \Psy\Command\Command {
 			$arModules[] = array(
 				sprintf('<info>%s</info>', $arModule["MODULE_ID"]),
 				$arModule["MODULE_VERSION"],
+				sprintf('<info>%s</info>', $arModule["MODULE_NAME"]),
+				sprintf('<info>%s</info>', $arModule["MODULE_DESCRIPTION"]),
 			);
 		}
 
@@ -124,7 +132,7 @@ class Version extends \Psy\Command\Command {
 
 		$table = $this->getApplication()->getHelperSet()->get('table')
 			->setRows(array())
-			->setHeaders(array("module", "varsion"));
+			->setHeaders(array("module", "varsion", "name", "description"));
 
 		if ( empty($name) ) {
 			foreach ($this->getMain() as $arModule) {
